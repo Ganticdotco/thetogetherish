@@ -35,13 +35,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Navigation
 # Links
 # Layout
-  ## Posts
-  ## Pages
+	## Posts
+	## Pages
 # Comments
 # Widgets
 # Infinite scroll
 # Media
-  ## Galleries
+	## Galleries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Normalize
@@ -273,6 +273,7 @@ th {
   width: 1px;
   overflow: hidden;
 }
+
 .screen-reader-text:focus {
   background-color: #f1f1f1;
   border-radius: 3px;
@@ -359,7 +360,7 @@ input,
 select,
 textarea {
   color: #404040;
-  font-family: sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
@@ -420,6 +421,7 @@ big {
 blockquote, q {
   quotes: "" "";
 }
+
 blockquote:before, blockquote:after, q:before, q:after {
   content: "";
 }
@@ -447,6 +449,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
@@ -494,7 +497,7 @@ textarea {
 }
 
 /*--------------------------------------------------------------
-# Forms
+# Buttons
 --------------------------------------------------------------*/
 button,
 input[type="button"],
@@ -512,6 +515,7 @@ input[type="submit"] {
   padding: .6em 1em .4em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
+
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
@@ -519,6 +523,7 @@ input[type="submit"]:hover {
   border-color: #ccc #bbb #aaa;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
 }
+
 button:active, button:focus,
 input[type="button"]:active,
 input[type="button"]:focus,
@@ -578,20 +583,69 @@ table {
 }
 
 /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.site-header {
+  position: fixed;
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+  z-index: 5;
+  -webkit-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+}
+
+.site-branding {
+  position: relative;
+}
+
+.site-description {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.custom-logo {
+  height: 2rem;
+  width: auto;
+}
+
+.custom-logo-link {
+  position: relative;
+  display: block;
+  text-align: center;
+  height: 2rem;
+  width: 12rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: -.2rem auto 0;
+  z-index: 15;
+}
+
+/*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
 .main-navigation {
   clear: both;
+  position: relative;
+  margin-top: -2.9rem;
   display: block;
+  text-align: center;
   float: left;
   width: 100%;
+  z-index: 10;
 }
+
 .main-navigation ul {
   display: none;
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
+
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -600,27 +654,40 @@ table {
   left: -999em;
   z-index: 99999;
 }
+
 .main-navigation ul ul ul {
   left: -999em;
   top: 0;
 }
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
   left: 100%;
 }
+
 .main-navigation ul ul a {
   width: 200px;
 }
+
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
   left: auto;
 }
+
 .main-navigation li {
   float: left;
   position: relative;
+  font-size: 0.875em;
 }
+
 .main-navigation a {
   display: block;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+.main-navigation a:visited, .main-navigation a:link {
+  color: #404040;
 }
 
 /* Small menu. */
@@ -635,27 +702,85 @@ table {
   margin-right: 5px;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (max-width: 719px) {
+  .main-navigation ul {
+    float: none;
+    display: block;
+    visibility: hidden;
+    padding: 5rem 0 1.5rem;
+    margin-top: -3rem;
+    height: 0;
+    opacity: 0;
+    background-color: white;
+    -webkit-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
+    transition: opacity 400ms linear, height 400ms ease-out;
+  }
+  .main-navigation.toggled ul {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+  }
+  .main-navigation.toggled ul li {
+    display: block;
+    float: none;
+  }
+}
+
+@media screen and (min-width: 45em) {
   .menu-toggle {
     display: none;
   }
-
   .main-navigation ul {
     display: block;
+    margin: 0 auto;
+    width: 41em;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .main-navigation ul li {
+    margin-right: 2rem;
+  }
+  .main-navigation ul li:nth-child(1) {
+    margin-left: 1.75rem;
+  }
+  .main-navigation ul li:nth-child(3) {
+    margin-right: 15em;
+  }
+  .main-navigation ul li:last-child {
+    margin-right: 0;
+  }
+  .main-navigation ul li.menu-item-has-children + li {
+    margin-left: .5rem;
+  }
+  .main-navigation ul li.menu-item-has-children:before {
+    content: "";
+    position: absolute;
+    right: -.75rem;
+    top: .5rem;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 .25rem;
+    border-top: 0.3rem solid #404040;
   }
 }
+
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
+
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
+
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -670,34 +795,19 @@ table {
 a {
   color: royalblue;
 }
-a:visited {
-  color: purple;
-}
-a:hover, a:focus, a:active {
-  color: midnightblue;
-}
-a:focus {
-  outline: thin dotted;
-}
-a:hover, a:active {
-  outline: 0;
-}
 
-/*--------------------------------------------------------------
-# Links
---------------------------------------------------------------*/
-a {
+a:visited {
   color: royalblue;
 }
-a:visited {
-  color: purple;
-}
+
 a:hover, a:focus, a:active {
   color: midnightblue;
 }
+
 a:focus {
   outline: thin dotted;
 }
+
 a:hover, a:active {
   outline: 0;
 }
@@ -721,40 +831,29 @@ body {
   /* Fallback for when there is no custom background color defined. */
 }
 
-@media screen and (min-width: 37.5em) {
-    .content-area {
-      float: left;
-      margin: 0 -25% 0 0;
-      width: 100%;
-    }
-
-    .site-main {
-      margin: 0 25% 0 0;
-    }
-
-    .site-content .widget-area {
-      float: right;
-      overflow: hidden;
-      width: 25%;
-    }
-
-    .site-footer {
-      clear: both;
-      width: 100%;
-    }
+.content-area {
+  float: left;
+  width: 100%;
 }
 
-/*--------------------------------------------------------------
-## Single Column / No Active Sidebar
---------------------------------------------------------------*/
-.no-sidebar .site-main {
-  margin: 0;
+.site-main {
+  margin: 0 50% 0 0;
 }
 
-.no-sidebar .content-area {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
+.site-content .widget-area {
+  float: left;
+  margin: 0 0 0 -50%;
+  overflow: hidden;
+  width: 25%;
+}
+
+.site-content #tertiary.widget-area {
+  margin: 0 0 0 -25%;
+}
+
+.site-footer {
+  clear: both;
+  width: 100%;
 }
 
 /*--------------------------------------------------------------
@@ -792,6 +891,10 @@ body {
   margin: 0 0 1.5em;
 }
 
+.content-area {
+  padding-top: 4.5rem;
+}
+
 /*--------------------------------------------------------------
 # Comments
 --------------------------------------------------------------*/
@@ -810,6 +913,7 @@ body {
   margin: 0 0 1.5em;
   /* Make sure select elements fit in widgets. */
 }
+
 .widget select {
   max-width: 100%;
 }
@@ -859,11 +963,13 @@ object {
   margin: 1em 0 1.5em;
   max-width: 100%;
 }
+
 .wp-caption img[class*="wp-image-"] {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+
 .wp-caption .wp-caption-text {
   margin: 0.8075em 0;
 }
@@ -878,9 +984,11 @@ object {
 .wp-caption.alignleft {
   margin-right: 20px;
 }
+
 .wp-caption.alignright {
   margin-left: 20px;
 }
+
 .wp-caption-text {
   text-align: center;
 }
@@ -898,27 +1006,35 @@ object {
   vertical-align: top;
   width: 100%;
 }
+
 .gallery-columns-2 .gallery-item {
   max-width: 50%;
 }
+
 .gallery-columns-3 .gallery-item {
   max-width: 33.33%;
 }
+
 .gallery-columns-4 .gallery-item {
   max-width: 25%;
 }
+
 .gallery-columns-5 .gallery-item {
   max-width: 20%;
 }
+
 .gallery-columns-6 .gallery-item {
   max-width: 16.66%;
 }
+
 .gallery-columns-7 .gallery-item {
   max-width: 14.28%;
 }
+
 .gallery-columns-8 .gallery-item {
   max-width: 12.5%;
 }
+
 .gallery-columns-9 .gallery-item {
   max-width: 11.11%;
 }

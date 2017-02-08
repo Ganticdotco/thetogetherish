@@ -16,6 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif" rel="stylesheet">
 
 <?php wp_head(); ?>
 </head>
@@ -27,8 +28,6 @@
 	<header id="masthead" class="site-header" role="banner">
 
 		<?php get_template_part( 'components/header/site', 'branding' ); ?>
-
-		<?php togetherish_the_custom_logo(); ?>
 
 		<?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
 
