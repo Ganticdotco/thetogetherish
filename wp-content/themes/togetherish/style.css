@@ -708,23 +708,36 @@ table {
     display: block;
     visibility: hidden;
     padding: 5rem 0 1.5rem;
-    margin-top: -3rem;
-    height: 0;
+    margin-top: -5rem;
     opacity: 0;
+    line-height: 0.5;
     background-color: white;
     -webkit-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.15);
-    transition: opacity 400ms linear, height 400ms ease-out;
+    transition: opacity 200ms linear, line-height 200ms ease-in, margin-top 200ms ease-in, visibility 0s linear 200ms;
+  }
+  .main-navigation ul li {
+    display: block;
+    float: none;
+    margin: 2rem 0;
+  }
+  .main-navigation ul li.menu-item-has-children:after {
+    content: "";
+    position: absolute;
+    right: 2rem;
+    top: .5rem;
+    border-style: solid;
+    border-color: transparent;
+    border-width: .25rem 0;
+    border-left: 0.3rem solid #404040;
   }
   .main-navigation.toggled ul {
     visibility: visible;
-    height: auto;
     opacity: 1;
-  }
-  .main-navigation.toggled ul li {
-    display: block;
-    float: none;
+    line-height: 1.5;
+    margin-top: -3rem;
+    transition: opacity 300ms linear, line-height 300ms ease-out, margin-top 300ms ease-out;
   }
 }
 
