@@ -11,7 +11,7 @@
 	<?php
 		// Output the featured image.
 		if ( has_post_thumbnail() ) {
-			the_post_thumbnail( 'togetherish-thumbnail' );
+			the_post_thumbnail( 'featured-img-cropped' );
 		}
 	?>
 	</a>

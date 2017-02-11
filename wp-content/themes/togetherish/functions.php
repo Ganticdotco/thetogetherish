@@ -44,6 +44,7 @@ function togetherish_setup() {
 
 	add_image_size( 'togetherish-featured-image', 640, 9999 );
 	add_image_size( 'togetherish-thumbnail', 960, 9999 );
+	add_image_size( 'featured-img-cropped', 960, 960, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
