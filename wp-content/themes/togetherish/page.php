@@ -17,7 +17,18 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+
 			<?php
+			// If front page, call the featured posts using a template part
+
+				if ( is_front_page() && ! is_paged() ) {
+				    // Include the featured content template.
+				    get_template_part( 'components/features/featured-content/display-featured' );
+				}
+			?>
+
+			<?php
+
 			while ( have_posts() ) : the_post();
 
 				get_template_part( 'components/page/content', 'page' );

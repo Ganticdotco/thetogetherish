@@ -29,7 +29,7 @@ function togetherish_jetpack_setup() {
 
 	add_theme_support( 'featured-content', array(
 		'filter'	 => 'togetherish_get_featured_posts',
-		'max_posts'  => 20,
+		'max_posts'  => 1,
 		'post_types' => array( 'post', 'page' ),
 	) );
 }

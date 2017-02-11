@@ -31,7 +31,7 @@ get_header(); ?>
 				</header>
 			<?php
 			endif;
-			
+
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
