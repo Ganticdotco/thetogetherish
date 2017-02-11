@@ -1,0 +1,10 @@
+.featured-content .post-thumbnail img {
+    width: 100%;
+}
+
+.featured-content {
+  height: 64rem;
+  overflow: hidden;
+  background-color: white;
+  @include angle(after, false, 3deg);
+}
