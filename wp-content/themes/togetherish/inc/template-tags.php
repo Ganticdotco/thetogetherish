@@ -7,6 +7,50 @@
  * @package togetherish
  */
 
+
+ if ( ! function_exists( 'togetherish_excerpt_meta' ) ) :
+ /**
+  * Prints HTML with meta information for the current post-date/time and author.
+  */
+ function togetherish_excerpt_meta() {
+ 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+ 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+ 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+ 	}
+
+ 	$time_string = sprintf( $time_string,
+ 		esc_attr( get_the_date( 'c' ) ),
+ 		esc_html( get_the_date() )
+ 	);
+
+ 	$posted_on = sprintf(
+ 		esc_html_x( ', %s', 'post date', 'togetherish' ),
+ 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+ 	);
+
+ 	$byline = sprintf(
+ 		esc_html_x( '%s', 'post author', 'togetherish' ),
+ 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a></span>'
+ 	);
+
+ 	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+
+	// Get post categories
+
+	if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'togetherish' ) );
+		if ( $categories_list && togetherish_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( '%1$s', 'togetherish' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
+
+	}
+
+ }
+ endif;
+
+
+
 if ( ! function_exists( 'togetherish_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.

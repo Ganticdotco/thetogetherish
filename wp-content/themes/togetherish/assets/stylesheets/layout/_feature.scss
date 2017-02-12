@@ -7,23 +7,48 @@
 }
 
 .featured-content {
-  height: 64rem;
+  // height: 48rem;
+  // max-height: 75vw;
   overflow: hidden;
   background-color: white;
+  max-height: 60vh;
   width: 125%;
   margin-left: -12.5%;
   @include angle(after, false, 3deg);
+  @include gradient-overlay();
 }
 
 .featured-content article {
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 10% 1fr 1fr 1fr 10%;
-  grid-template-rows: 16rem 16rem 16rem;
+  grid-template-rows: 20vh 20vh 20vh;
 }
 
 .featured-content .entry-header {
-    grid-column: 2 / span 2;
-    grid-row: 3;
-    z-index: 2;
+  position:absolute;
+  top:30vh;
+  left:10%;
+
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  align-self: end;
+  z-index: 2;
+
+  color: white;
+
+  h2 {
+    margin-top: 0;
+
+    font-family: $font__serif;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  text-shadow: 0 .1rem .5rem rgba(0,0,0,0.75);
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }

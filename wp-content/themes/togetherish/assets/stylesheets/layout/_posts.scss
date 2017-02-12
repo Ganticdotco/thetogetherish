@@ -2,13 +2,19 @@
 	display: block;
 }
 
-.hentry {
-	margin: 0 0 1.5em;
-}
-
-.byline,
 .updated:not(.published){
 	display: none;
+}
+
+.byline, .posted-on {
+	font-weight: bold;
+}
+
+.cat-links {
+	font-size: .75rem;
+	text-transform: uppercase;
+	margin-left: .25rem;
+	letter-spacing: 0.05rem;
 }
 
 .single .byline,
@@ -20,4 +26,72 @@
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+}
+
+.content-area article.post {
+	display: block;
+	float: left;
+	width: calc((100% - 2rem) / 3);
+	height:26vw;
+	margin: 1rem 1rem 0 0;
+
+	// Grid was fun, but can't figure out how to make it work with floats as fall-back
+	// grid-column-start: auto;
+  // grid-column-end: span 1;
+  // grid-row-start: auto;
+  // grid-row-end: span 1;
+
+	padding: 1rem;
+
+	overflow: hidden;
+	background-color: white;
+	box-shadow: 0 0.2rem .5rem rgba(0,0,0,0.1);
+	transition: box-shadow .75s cubic-bezier(.33,0,.5,1), transform .75s cubic-bezier(.33,0,.5,1);
+
+	&:first-child {
+		// grid-column-end: span 2;
+		width: calc(((100% - 2rem) / 3) * 2 + 1rem);
+	}
+
+	&:nth-child(3n + 6) {
+		margin-right: 0;
+	}
+
+	.post-thumbnail {
+		height: 12rem;
+		overflow: hidden;
+		background-color: white;
+
+		@include angle(after, false, 3deg);
+
+		a {
+			position: absolute;
+			width: 100%;
+			height: 99%;
+			overflow: hidden;
+		}
+	}
+
+	header .entry-title {
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+
+		font-size: 1.25rem;
+		font-family: $font__serif;
+
+		a {
+			text-decoration: none;
+			color: $color__text-main;
+		}
+
+	}
+
+	&:hover {
+		box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.2);
+		transform: translateY(-.25rem);
+	}
+
+
 }

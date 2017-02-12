@@ -2,3 +2,12 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.content-area {
+	position: relative;
+	z-index: 5;
+
+	&.home-content {
+		margin-top: -14rem;
+	}
+}

@@ -15,9 +15,9 @@
 		}
 	?>
 	</a>
-
 	<header class="entry-header">
 		<?php
+			togetherish_excerpt_meta();
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">','</a></h1>' );
 		?>
 	</header>
