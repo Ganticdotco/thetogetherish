@@ -671,7 +671,7 @@ table {
   transition: opacity 200ms linear, line-height 200ms ease-in, margin-top 200ms ease-in, visibility 0s linear 200ms;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 45em) {
   .nav-menu {
     display: block;
     visibility: visible;
@@ -741,7 +741,7 @@ table {
   border-left: 0.3rem solid #f300c6;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 45em) {
   .menu-item {
     float: left;
     padding: 0;
@@ -825,7 +825,7 @@ table {
   display: block;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 45em) {
   .menu-toggle {
     display: none;
   }
@@ -958,22 +958,12 @@ body {
 .content-area article.post {
   display: block;
   float: left;
-  width: calc((100% - 2rem) / 3);
-  height: 26vw;
-  margin: 1rem 1rem 0 0;
+  margin: .25rem 0 0;
   padding: 1rem;
   overflow: hidden;
   background-color: white;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.75s cubic-bezier(0.33, 0, 0.5, 1), transform 0.75s cubic-bezier(0.33, 0, 0.5, 1);
-}
-
-.content-area article.post:first-child {
-  width: calc(((100% - 2rem) / 3) * 2 + 1rem);
-}
-
-.content-area article.post:nth-child(3n + 6) {
-  margin-right: 0;
 }
 
 .content-area article.post .post-thumbnail {
@@ -1027,6 +1017,65 @@ body {
   transform: translateY(-0.25rem);
 }
 
+@media screen and (min-width: 60em) {
+  .content-area article.post {
+    width: calc((100% - 1rem) / 2);
+    margin: 1rem 1rem 0 0;
+    height: 40vw;
+  }
+  .content-area article.post:first-child {
+    width: 100%;
+    margin-right: 0;
+    height: 27vw;
+    max-height: 25rem;
+  }
+  .content-area article.post:nth-child(2n + 3) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .content-area article.post {
+    width: calc((100% - 2rem) / 3);
+    margin: 1rem 1rem 0 0;
+    height: 26vw;
+  }
+  .content-area article.post:first-child {
+    width: calc(((100% - 2rem) / 3) * 2 + 1rem);
+    margin-right: 1rem;
+    height: 26vw;
+    max-height: 18rem;
+  }
+  .content-area article.post:nth-child(2n + 3) {
+    margin-right: 1rem;
+  }
+  .content-area article.post:nth-child(3n + 6) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 90em) {
+  .content-area article.post {
+    width: calc((100% - 3rem) / 4);
+    margin: 1rem 1rem 0 0;
+    height: 20vw;
+  }
+  .content-area article.post:first-child {
+    width: calc(50% - .5rem);
+    height: 20vw;
+    max-height: none;
+  }
+  .content-area article.post:nth-child(3n + 6) {
+    margin-right: 1rem;
+  }
+  .content-area article.post:nth-child(2) {
+    clear: both;
+  }
+  .content-area article.post:nth-child(4n + 5) {
+    margin-right: 0;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Pages
 --------------------------------------------------------------*/
@@ -1048,27 +1097,25 @@ body {
 ## Grid setup
 --------------------------------------------------------------*/
 .site-content {
-  max-width: 80%;
   margin: 0 auto;
+  max-width: calc(100vw - 1rem);
+}
+
+@media screen and (min-width: 45em) {
+  .site-content {
+    max-width: 80%;
+  }
 }
 
 /*--------------------------------------------------------------
 ## Feature Post
 --------------------------------------------------------------*/
-.featured-content .post-thumbnail {
-  grid-area: 1 / 1 / 3 / 6;
-}
-
-.featured-content .post-thumbnail img {
-  width: 100%;
-}
-
 .featured-content {
   overflow: hidden;
   background-color: white;
-  max-height: 60vh;
-  width: 125%;
-  margin-left: -12.5%;
+  height: 32rem;
+  width: calc(100% + 1rem);
+  margin-left: -.5rem;
   position: relative;
 }
 
@@ -1121,9 +1168,17 @@ body {
   grid-template-rows: 20vh 20vh 20vh;
 }
 
+.featured-content .post-thumbnail {
+  grid-area: 1 / 1 / 3 / 6;
+}
+
+.featured-content .post-thumbnail img {
+  width: 100%;
+}
+
 .featured-content .entry-header {
   position: absolute;
-  top: 30vh;
+  bottom: 13rem;
   left: 10%;
   grid-column: 2 / span 2;
   grid-row: 2;
@@ -1143,6 +1198,14 @@ body {
 .featured-content .entry-header a {
   text-decoration: none;
   color: white;
+}
+
+@media screen and (min-width: 45em) {
+  .featured-content {
+    width: 125%;
+    margin-left: -12.5%;
+    height: 60vh;
+  }
 }
 
 /*--------------------------------------------------------------

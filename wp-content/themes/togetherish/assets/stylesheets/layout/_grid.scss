@@ -1,6 +1,10 @@
 .site-content {
-    max-width: 80%;
     margin: 0 auto;
+    max-width: calc(100vw - 1rem);
+
+    @include mq(S) {
+      max-width: 80%;
+    }
 }
 
 // .site-main {

@@ -45,7 +45,7 @@
 	}
 
 
-	@include mq(M){
+	@include mq(S){
 		display: block;
 		visibility: visible;
 		opacity: 1;
@@ -135,7 +135,7 @@
 		}
 	}
 
-	@include mq(M){
+	@include mq(S){
 		float: left;
 
 		padding: 0;
@@ -234,7 +234,7 @@
 /* Small menu. */
 .menu-toggle {
 	display: block;
-	@include mq(M){
+	@include mq(S){
 		display: none;
 	}
 }
