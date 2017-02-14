@@ -907,10 +907,32 @@ body {
 }
 
 .site-content .widget-area {
-  float: left;
-  margin: 0 0 0 -50%;
+  position: absolute;
+  display: none;
   overflow: hidden;
-  width: 25%;
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.75s cubic-bezier(0.33, 0, 0.5, 1), transform 0.75s cubic-bezier(0.33, 0, 0.5, 1);
+}
+
+@media screen and (min-width: 75em) {
+  .site-content .widget-area {
+    display: block;
+    height: calc(52vw + 1rem);
+    max-height: calc(26vw + 19rem);
+    width: calc((100% - 2rem) / 3);
+    top: calc(60vh - 14rem);
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 90em) {
+  .site-content .widget-area {
+    display: none;
+  }
 }
 
 .site-content #tertiary.widget-area {
@@ -952,11 +974,12 @@ body {
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0;
+  margin: 0;
 }
 
 .content-area article.post {
   display: block;
+  width: 100%;
   float: left;
   margin: .25rem 0 0;
   padding: 1rem;
@@ -998,6 +1021,12 @@ body {
   overflow: hidden;
 }
 
+.content-area article.post header {
+  margin-top: calc(-3rem + 6vw);
+  position: relative;
+  z-index: 5;
+}
+
 .content-area article.post header .entry-title {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
@@ -1009,7 +1038,24 @@ body {
 
 .content-area article.post header .entry-title a {
   text-decoration: none;
-  color: #404040;
+  color: #000000;
+}
+
+.content-area article.post header .byline,
+.content-area article.post header .posted-on,
+.content-area article.post header .cat-links {
+  color: #b4b4b4;
+}
+
+.content-area article.post header .byline a,
+.content-area article.post header .posted-on a,
+.content-area article.post header .cat-links a {
+  color: #b4b4b4;
+  text-decoration: none;
+}
+
+.content-area article.post .entry-content {
+  display: none;
 }
 
 .content-area article.post:hover {
@@ -1017,11 +1063,23 @@ body {
   transform: translateY(-0.25rem);
 }
 
+@media screen and (min-width: 45em) {
+  .content-area article.post header {
+    margin-top: calc(-2rem + 3vw);
+  }
+}
+
 @media screen and (min-width: 60em) {
   .content-area article.post {
     width: calc((100% - 1rem) / 2);
     margin: 1rem 1rem 0 0;
     height: 40vw;
+  }
+  .content-area article.post .post-thumbnail {
+    height: 30vw;
+  }
+  .content-area article.post header {
+    margin-top: -1rem;
   }
   .content-area article.post:first-child {
     width: 100%;
@@ -1039,6 +1097,12 @@ body {
     width: calc((100% - 2rem) / 3);
     margin: 1rem 1rem 0 0;
     height: 26vw;
+  }
+  .content-area article.post .post-thumbnail {
+    height: 17vw;
+  }
+  .content-area article.post header {
+    margin-top: -1.5rem;
   }
   .content-area article.post:first-child {
     width: calc(((100% - 2rem) / 3) * 2 + 1rem);
@@ -1059,6 +1123,9 @@ body {
     width: calc((100% - 3rem) / 4);
     margin: 1rem 1rem 0 0;
     height: 20vw;
+  }
+  .content-area article.post .post-thumbnail {
+    height: 14vw;
   }
   .content-area article.post:first-child {
     width: calc(50% - .5rem);
@@ -1097,6 +1164,7 @@ body {
 ## Grid setup
 --------------------------------------------------------------*/
 .site-content {
+  position: relative;
   margin: 0 auto;
   max-width: calc(100vw - 1rem);
 }

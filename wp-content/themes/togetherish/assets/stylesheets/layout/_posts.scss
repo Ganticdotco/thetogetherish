@@ -25,11 +25,12 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 0;
 }
 
 .content-area article.post {
 	display: block;
+	width: 100%;
 	float: left;
 	margin: .25rem 0 0;
 
@@ -61,20 +62,40 @@
 		}
 	}
 
-	header .entry-title {
-		-webkit-margin-before: 0em;
-		-webkit-margin-after: 0em;
-		-webkit-margin-start: 0px;
-		-webkit-margin-end: 0px;
+	header {
+		margin-top: calc(-3rem + 6vw);
+    position: relative;
+    z-index: 5;
 
-		font-size: 1.25rem;
-		font-family: $font__serif;
+		.entry-title {
+			-webkit-margin-before: 0em;
+			-webkit-margin-after: 0em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
 
-		a {
-			text-decoration: none;
-			color: $color__text-main;
+			font-size: 1.25rem;
+			font-family: $font__serif;
+
+			a {
+				text-decoration: none;
+				color: $color__text-dark;
+			}
+
 		}
 
+		.byline,
+		.posted-on,
+		.cat-links {
+			color: $color__text-lighter;
+			a {
+				color: $color__text-lighter;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.entry-content {
+		display: none;
 	}
 
 	&:hover {
@@ -82,10 +103,24 @@
 		transform: translateY(-.25rem);
 	}
 
+	@include mq(S){
+		header {
+			margin-top: calc(-2rem + 3vw);
+		}
+	}
+
 	@include mq(M) {
 		width: calc((100% - 1rem) / 2);
 		margin: 1rem 1rem 0 0;
 		height:40vw;
+
+		.post-thumbnail {
+			height: 30vw;
+		}
+
+		header {
+			margin-top: -1rem;
+		}
 
 		&:first-child {
 			width: 100%;
@@ -103,6 +138,14 @@
 		width: calc((100% - 2rem) / 3);
 		margin: 1rem 1rem 0 0;
 		height:26vw;
+
+		.post-thumbnail {
+			height: 17vw;
+		}
+
+		header {
+			margin-top: -1.5rem;
+		}
 
 		&:first-child {
 			// grid-column-end: span 2;
@@ -125,6 +168,10 @@
 		width: calc((100% - 3rem) / 4);
 		margin: 1rem 1rem 0 0;
 		height: 20vw;
+
+		.post-thumbnail {
+			height: 14vw;
+		}
 
 		&:first-child {
 			width: calc(50% - .5rem);
