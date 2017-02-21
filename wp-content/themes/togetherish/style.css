@@ -920,7 +920,7 @@ body {
 
 @media screen and (min-width: 75em) {
   .site-content .widget-area {
-    display: block;
+    display: none;
     height: calc(52vw + 1rem);
     max-height: calc(26vw + 19rem);
     width: calc((100% - 2rem) / 3);
