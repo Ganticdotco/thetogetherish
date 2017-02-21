@@ -70,6 +70,25 @@
 		overflow: hidden;
 		background-color: white;
 
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 4;
+
+			mix-blend-mode: multiply;
+			opacity: .5;
+
+			background: -moz-linear-gradient(bottom,  rgba(41,46,49,1) 0%, rgba(41,46,49,0) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(bottom,  rgba(41,46,49,1) 0%,rgba(41,46,49,0) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to top,  rgba(41,46,49,1) 0%,rgba(41,46,49,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00292e31', endColorstr='#292e31',GradientType=0 ); /* IE6-9 */
+		}
+
 		@include angle(after, false, 3deg);
 
 		a {
